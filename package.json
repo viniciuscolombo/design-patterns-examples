@@ -10,7 +10,8 @@
     "problem_adapter": "node desafio02/problemAdapter.js",
     "problem_bridge": "node desafio02/problemBridge.js",
     "problem_composite": "node desafio02/problemComposite.js",
-    "problem_decorator": "node desafio02/problemDecorator.js"
+    "problem_decorator": "node desafio02/problemDecorator.js",
+    "solid": "node solid/srp.js"
   },
   "author": "Ugioni",
   "license": "MIT"

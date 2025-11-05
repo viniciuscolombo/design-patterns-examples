@@ -1,12 +1,3 @@
-# Patterns S.O.L.I.D
-
-1 . Single Responsibility Principle (Princípio de Responsabilidade Única): Cada classe deve ter apenas um motivo para mudar.
-
-A ideia é que uma classe (ou módulo) tenha apenas uma responsabilidade — e, portanto, apenas uma razão para mudar.
-
-Exemplo que viola SRP (má prática): um objeto que mistura dados com persistência e envio de e-mail.
-
-```javascript
 // Exemplo ruim: Person tem 3 responsabilidades ao mesmo tempo (modelo, persistência e notificação)
 class Person {
   constructor(name, email) {
@@ -28,13 +19,9 @@ class Person {
 const p = new Person('Ana', 'ana@exemplo.com');
 p.saveToDatabase();
 p.sendWelcomeEmail();
-```
 
-Refatorando para respeitar SRP: separar responsabilidades em classes/serviços distintos.
 
-```javascript
-// Modelo de dados (apenas dados)
-class Person {
+class PersonSrp {
   constructor(name, email) {
     this.name = name;
     this.email = email;
@@ -64,11 +51,3 @@ const mail = new EmailService();
 
 db.save(person);
 mail.sendWelcome(person);
-```
-
-Benefícios desta refatoração:
-- Cada classe tem uma única responsabilidade (modelo, persistência ou notificação).
-- Facilita testes unitários: você pode mockar `DatabaseService` e `EmailService` separadamente.
-- Menos acoplamento: mudanças na forma de enviar e-mails não exigem alterações na classe `Person`.
-
-----
