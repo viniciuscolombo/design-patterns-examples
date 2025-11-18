@@ -72,3 +72,52 @@ Benefícios desta refatoração:
 - Menos acoplamento: mudanças na forma de enviar e-mails não exigem alterações na classe `Person`.
 
 ----
+
+Interface Segregation Principle (ISP)
+
+O **Interface Segregation Principle (ISP)** diz que:
+
+> *Nenhum cliente deve ser forçado a depender de métodos que não usa.*
+
+Na prática: é melhor ter **interfaces pequenas e específicas** do que uma interface "gorda" que obriga classes a implementarem (ou conhecerem) métodos que não fazem sentido para elas.
+
+---
+
+## Arquivo de exemplo
+
+- `isp.js` – demonstra o ISP com um cenário de impressoras, scanners e fax:
+  - `IPrinter`, `IScanner`, `IFax`: "interfaces" pequenas e focadas.
+  - `SimplePrinter`: só sabe **imprimir**.
+  - `SimpleScanner`: só sabe **escanear**.
+  - `SimpleFax`: só sabe **enviar fax**.
+  - `MultiFunctionPrinter`: combina impressão, scanner e fax.
+
+Cada classe depende apenas da interface que realmente precisa, evitando métodos inúteis.
+
+---
+
+## Como executar o exemplo
+
+No diretório raiz do projeto:
+
+```bash
+cd solid
+node isp.js
+```
+
+Você verá uma saída semelhante a:
+
+```text
+--- SimplePrinter ---
+[SimplePrinter] Imprimindo: Contrato 123
+
+--- SimpleScanner ---
+[SimpleScanner] Escaneando: Contrato 123
+
+--- MultiFunctionPrinter ---
+[MFP] Imprimindo: Contrato 123
+[SimpleScanner] Escaneando: Contrato 123
+[SimpleFax] Enviando fax: Contrato 123
+```
+
+Assim fica claro como o ISP ajuda a manter cada classe enxuta, usando apenas os métodos que realmente importam para ela.
